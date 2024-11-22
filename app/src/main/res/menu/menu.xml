@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/ICadProd"
+        android:title="@string/cadastrar_item" />
+    <item
+        android:id="@+id/IRemovProd"
+        android:title="@string/remover_item" />
+    <item
+        android:id="@+id/IConsProd"
+        android:title="@string/consultar_item" />
+    <item
+        android:id="@+id/IAttProd"
+        android:title="@string/atualizar_item" />
+</menu>

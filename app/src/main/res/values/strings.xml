@@ -1,0 +1,14 @@
+<resources>
+    <string name="MeuNome">Otávio Gabriel Ribeiro Scabio - RA: 1110482223043</string>
+    <string name="app_name">Estoque</string>
+    <string name="atualizar_item">Atualizar Produto</string>
+    <string name="cadastrar_item">Cadastrar Produto</string>
+    <string name="consultar_item">Consultar Produto</string>
+    <string name="remover_item">Remover Produto</string>
+    <string name="id_item">ID</string>
+    <string name="nome_item">Nome</string>
+    <string name="quantidade_item">Quantidade</string>
+    <string name="preco_item">Preço</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
