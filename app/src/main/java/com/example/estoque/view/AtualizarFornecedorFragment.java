@@ -61,11 +61,15 @@ public class AtualizarFornecedorFragment extends Fragment implements IAtualiza {
         String estado = edtEstado.getText().toString();
         String pais = edtPais.getText().toString();
         String numeroRegistro = edtNumeroRegistro.getText().toString();
+        
+        boolean isUpdatedInternacional = false;
+        boolean isUpdatedNacional = false;
+        if(cnpj.isEmpty()){
+            isUpdatedInternacional = dbHelper.updateFornecedorInternacional(id, nome, pais, numeroRegistro);
+        } else{
+            isUpdatedNacional = dbHelper.updateFornecedorNacional(id, nome, cnpj, estado);
+        }
 
-
-        boolean isUpdatedNacional = dbHelper.updateFornecedorNacional(id, nome, cnpj, estado);
-
-        boolean isUpdatedInternacional = dbHelper.updateFornecedorInternacional(id, nome, pais, numeroRegistro);
 
         if (isUpdatedNacional || isUpdatedInternacional) {
             Toast.makeText(getContext(), "Fornecedor atualizado com sucesso!", Toast.LENGTH_SHORT).show();
