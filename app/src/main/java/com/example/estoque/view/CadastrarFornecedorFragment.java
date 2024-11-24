@@ -1,66 +1,132 @@
 package com.example.estoque.view;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Toast;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import com.example.estoque.R;
+import com.example.estoque.controller.FornecedorDatabaseHelper;
+import com.example.estoque.controller.ICadastra;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link CadastrarFornecedorFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class CadastrarFornecedorFragment extends Fragment {
+//Otávio Gabriel Ribeiro Scabio - RA: 1110482223043
+public class CadastrarFornecedorFragment extends Fragment implements ICadastra {
+    private Spinner spinnerTipoFornecedor;
+    private EditText edtCnpj;
+    private EditText edtNome;
+    private EditText edtEstado;
+    private EditText edtPais;
+    private EditText edtNumeroRegistro;
+    private Button btnSalvar;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private FornecedorDatabaseHelper dbHelper;
 
-    public CadastrarFornecedorFragment() {
-        // Required empty public constructor
-    }
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_cadastrar_fornecedor, container, false);
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment CadastrarFornecedorFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static CadastrarFornecedorFragment newInstance(String param1, String param2) {
-        CadastrarFornecedorFragment fragment = new CadastrarFornecedorFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
+        dbHelper = new FornecedorDatabaseHelper(getContext());
+
+         spinnerTipoFornecedor = view.findViewById(R.id.spinnerTipoFornecedor);
+         edtNome = view.findViewById(R.id.etNomeForne);
+         edtCnpj = view.findViewById(R.id.etCnpjForne);
+         edtEstado = view.findViewById(R.id.etEstadoForne);
+         edtPais = view.findViewById(R.id.etPaisForne);
+         edtNumeroRegistro = view.findViewById(R.id.etNumeroRegistroForne);
+         btnSalvar = view.findViewById(R.id.btnSalvarForne);
+
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+                getContext(),
+                R.array.tipos_fornecedor,
+                android.R.layout.simple_spinner_item
+        );
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerTipoFornecedor.setAdapter(adapter);
+
+
+
+
+        spinnerTipoFornecedor.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position == 1) { // Nacional
+                    edtCnpj.setVisibility(View.VISIBLE);
+                    edtEstado.setVisibility(View.VISIBLE);
+                    edtPais.setVisibility(View.GONE);
+                    edtNumeroRegistro.setVisibility(View.GONE);
+                } else if (position == 2) { // Internacional
+                    edtCnpj.setVisibility(View.GONE);
+                    edtEstado.setVisibility(View.GONE);
+                    edtPais.setVisibility(View.VISIBLE);
+                    edtNumeroRegistro.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Não fazer nada
+            }
+        });
+
+
+        btnSalvar.setOnClickListener(v -> Cadastra());
+
+        return view;
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+    public void Cadastra() {
+        String nome = edtNome.getText().toString();
+
+        if (spinnerTipoFornecedor.getSelectedItemPosition() == 1) { // Nacional
+            String cnpj = edtCnpj.getText().toString();
+            String estado = edtEstado.getText().toString();
+
+            if (nome.isEmpty() || cnpj.isEmpty()  || estado.isEmpty()) {
+                Toast.makeText(getContext(), "Preencha todos os campos!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            boolean isInserted = dbHelper.addFornecedorNacional(nome, cnpj, estado);
+            if (isInserted) {
+                Toast.makeText(getContext(), "Fornecedor Nacional adicionado!", Toast.LENGTH_SHORT).show();
+                edtNome.setText("");
+                edtCnpj.setText("");
+                edtEstado.setText("");
+            } else {
+                Toast.makeText(getContext(), "Erro ao adicionar fornecedor!", Toast.LENGTH_SHORT).show();
+            }
+
+        } else if (spinnerTipoFornecedor.getSelectedItemPosition() == 2) { // Internacional
+            String pais = edtPais.getText().toString();
+            String numeroRegistro = edtNumeroRegistro.getText().toString();
+
+            if (nome.isEmpty() || pais.isEmpty() || numeroRegistro.isEmpty()) {
+                Toast.makeText(getContext(), "Preencha todos os campos!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            boolean isInserted = dbHelper.addFornecedorInternacional(nome, pais, numeroRegistro);
+            if (isInserted) {
+                Toast.makeText(getContext(), "Fornecedor Internacional adicionado!", Toast.LENGTH_SHORT).show();
+                edtNome.setText("");
+                edtPais.setText("");
+                edtNumeroRegistro.setText("");
+            } else {
+                Toast.makeText(getContext(), "Erro ao adicionar fornecedor!", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_cadastrar_fornecedor, container, false);
-    }
 }

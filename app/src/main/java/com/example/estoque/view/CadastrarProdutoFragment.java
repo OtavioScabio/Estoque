@@ -44,6 +44,7 @@ public class CadastrarProdutoFragment extends Fragment implements ICadastra {
 
         return view;
     }
+
     @Override
     public void Cadastra() {
         String nome = etNome.getText().toString();

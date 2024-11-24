@@ -11,4 +11,22 @@
     <string name="preco_item">Preço</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="BtnCadForne">Cadastrar Fornecedor</string>
+    <string name="cnpj">CNPJ</string>
+    <string name="nomeForne">Nome do Fornecedor</string>
+    <string name="paisForne">País</string>
+    <string name="n_registro">Número de Registro</string>
+    <string name="raz_social">Razão Social</string>
+    <string name="estado">Estado</string>
+    <string name="consultar_fornecedor">Consultar Fornecedor</string>
+    <string name="remover_fornecedor">Remover Fornecedor</string>
+    <string name="cadastrar_fornecedor">Cadastrar Fornecedor</string>
+    <string name="atualizar_fornecedor">Atualizar Fornecedor</string>
+
+    <string-array name="tipos_fornecedor">
+        <item>Selecione o tipo</item>
+        <item>Nacional</item>
+        <item>Internacional</item>
+    </string-array>
+
 </resources>

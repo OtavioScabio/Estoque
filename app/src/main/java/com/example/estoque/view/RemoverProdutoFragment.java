@@ -14,7 +14,7 @@ import androidx.fragment.app.Fragment;
 import com.example.estoque.R;
 import com.example.estoque.controller.ProdutoDatabaseHelper;
 import com.example.estoque.controller.IRemove;
-
+//Otávio Gabriel Ribeiro Scabio - RA: 1110482223043
 public class RemoverProdutoFragment extends Fragment implements IRemove {
 
     private ProdutoDatabaseHelper dbHelper;

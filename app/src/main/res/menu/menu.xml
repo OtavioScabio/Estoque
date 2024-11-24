@@ -1,16 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
+    <item
+        android:id="@+id/IAttForne"
+        android:title="@string/atualizar_fornecedor" />
+    <item
+        android:id="@+id/IAttProd"
+        android:title="@string/atualizar_item" />
+    <item
+        android:id="@+id/ICadForne"
+        android:title="@string/cadastrar_fornecedor" />
     <item
         android:id="@+id/ICadProd"
         android:title="@string/cadastrar_item" />
     <item
-        android:id="@+id/IRemovProd"
-        android:title="@string/remover_item" />
+        android:id="@+id/IConsForne"
+        android:title="@string/consultar_fornecedor" />
     <item
         android:id="@+id/IConsProd"
         android:title="@string/consultar_item" />
     <item
-        android:id="@+id/IAttProd"
-        android:title="@string/atualizar_item" />
+        android:id="@+id/IRemovForne"
+        android:title="@string/remover_fornecedor" />
+    <item
+        android:id="@+id/IRemovProd"
+        android:title="@string/remover_item" />
+
 </menu>

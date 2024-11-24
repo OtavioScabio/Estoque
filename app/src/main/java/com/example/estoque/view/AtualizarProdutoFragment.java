@@ -16,7 +16,7 @@ import com.example.estoque.R;
 import com.example.estoque.controller.ProdutoDatabaseHelper;
 import com.example.estoque.controller.IAtualiza;
 
-
+//Otávio Gabriel Ribeiro Scabio - RA: 1110482223043
 public class AtualizarProdutoFragment extends Fragment implements IAtualiza {
 
     private ProdutoDatabaseHelper dbHelper;

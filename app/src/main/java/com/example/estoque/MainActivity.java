@@ -16,11 +16,17 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.estoque.view.AtualizarFornecedorFragment;
 import com.example.estoque.view.AtualizarProdutoFragment;
+import com.example.estoque.view.CadastrarFornecedorFragment;
 import com.example.estoque.view.CadastrarProdutoFragment;
+import com.example.estoque.view.ListarFornecedorFragment;
 import com.example.estoque.view.ListarProdutoFragment;
+import com.example.estoque.view.RemoverFornecedorFragment;
 import com.example.estoque.view.RemoverProdutoFragment;
 
+
+//Otávio Gabriel Ribeiro Scabio - RA: 1110482223043
 public class MainActivity extends AppCompatActivity {
 
     private Fragment fragment;
@@ -56,6 +62,18 @@ public class MainActivity extends AppCompatActivity {
         }
         if (tipoOperacao.equals("Remover")){
             fragment = new RemoverProdutoFragment();
+        }
+        if (tipoOperacao.equals("CadastrarForne")){
+            fragment = new CadastrarFornecedorFragment();
+        }
+        if (tipoOperacao.equals("ListarForne")){
+            fragment = new ListarFornecedorFragment();
+        }
+        if (tipoOperacao.equals("AtualizarForne")){
+            fragment = new AtualizarFornecedorFragment();
+        }
+        if (tipoOperacao.equals("RemoverForne")){
+            fragment = new RemoverFornecedorFragment();
         }
 
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -101,6 +119,34 @@ public class MainActivity extends AppCompatActivity {
         }
         if (id == R.id.IRemovProd){
             bundle.putString("tipoOperacao", "Remover");
+            intent.putExtras(bundle);
+            this.startActivity(intent);
+            this.finish();
+            return true;
+        }
+        if (id == R.id.ICadForne){
+            bundle.putString("tipoOperacao", "CadastrarForne");
+            intent.putExtras(bundle);
+            this.startActivity(intent);
+            this.finish();
+            return true;
+        }
+        if (id == R.id.IAttForne){
+            bundle.putString("tipoOperacao", "AtualizarForne");
+            intent.putExtras(bundle);
+            this.startActivity(intent);
+            this.finish();
+            return true;
+        }
+        if (id == R.id.IConsForne){
+            bundle.putString("tipoOperacao", "ListarForne");
+            intent.putExtras(bundle);
+            this.startActivity(intent);
+            this.finish();
+            return true;
+        }
+        if (id == R.id.IRemovForne){
+            bundle.putString("tipoOperacao", "RemoverForne");
             intent.putExtras(bundle);
             this.startActivity(intent);
             this.finish();

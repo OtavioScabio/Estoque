@@ -13,7 +13,7 @@ import com.example.estoque.controller.ProdutoDatabaseHelper;
 
 import java.util.List;
 
-
+//Otávio Gabriel Ribeiro Scabio - RA: 1110482223043
 public class ListarProdutoFragment extends Fragment {
 
     private ProdutoDatabaseHelper dbHelper;

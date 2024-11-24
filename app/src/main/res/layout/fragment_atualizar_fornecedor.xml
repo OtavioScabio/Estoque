@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.AtualizarFornecedorFragment">
+
+    <!-- Campo para o ID -->
+
+    <!-- Campos para Fornecedor Nacional -->
+
+    <!-- Campos para Fornecedor Internacional -->
+
+    <!-- Botão para Atualizar -->
+
+    <EditText
+        android:id="@+id/edtFornecedorId"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="166dp"
+        android:layout_marginEnd="72dp"
+        android:layout_marginBottom="17dp"
+        android:hint="ID do Fornecedor"
+        android:importantForAutofill="no"
+        android:inputType="number"
+        android:textColorHint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/edtNome"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="154dp"
+        android:layout_height="23dp"
+        android:layout_marginBottom="10dp"
+        android:text="Internacional"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/edtPais"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtEstado" />
+
+    <EditText
+        android:id="@+id/edtEstado"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="73dp"
+        android:layout_marginEnd="73dp"
+        android:layout_marginBottom="24dp"
+        android:hint="@string/estado"
+        android:importantForAutofill="no"
+        android:textColorHint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtCnpj" />
+
+    <Button
+        android:id="@+id/btnAtualizar"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginBottom="54dp"
+        android:text="Atualizar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtNumeroRegistro" />
+
+    <EditText
+        android:id="@+id/edtCnpj"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="73dp"
+        android:layout_marginEnd="73dp"
+        android:layout_marginBottom="14dp"
+        android:hint="@string/cnpj"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:textColorHint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/edtEstado"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <EditText
+        android:id="@+id/edtNome"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginEnd="72dp"
+        android:layout_marginBottom="29dp"
+        android:hint="@string/nomeForne"
+        android:importantForAutofill="no"
+        android:textColorHint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtFornecedorId" />
+
+    <EditText
+        android:id="@+id/edtPais"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="74dp"
+        android:layout_marginEnd="74dp"
+        android:layout_marginBottom="13dp"
+        android:hint="@string/paisForne"
+        android:importantForAutofill="no"
+        android:textColorHint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/edtNumeroRegistro"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <EditText
+        android:id="@+id/edtNumeroRegistro"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="74dp"
+        android:layout_marginEnd="74dp"
+        android:layout_marginBottom="16dp"
+        android:hint="@string/n_registro"
+        android:importantForAutofill="no"
+        android:textColorHint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/btnAtualizar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtPais" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="157dp"
+        android:layout_height="29dp"
+        android:layout_marginBottom="15dp"
+        android:text="Nacional"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/edtCnpj"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtNome" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

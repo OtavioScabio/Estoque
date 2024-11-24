@@ -1,15 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.CadastrarFornecedorFragment">
+    tools:context=".view.CadastrarFornecedorFragment"
+    tools:ignore="ExtraText">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+
+    <!-- Campo para Nome -->
+
+    <!-- Campos para Fornecedor Nacional -->
+
+    <Spinner
+        android:id="@+id/spinnerTipoFornecedor"
+        android:layout_width="307dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="42dp"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toTopOf="@+id/etNumeroRegistroForne"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etNomeForne" />
+
+    <EditText
+        android:id="@+id/etNomeForne"
+        android:layout_width="307dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="210dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="20dp"
+        android:autofillHints=""
+        android:hint="@string/nomeForne"
+        android:importantForAutofill="no"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerTipoFornecedor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:textColorHint="@color/black" />
 
 
-</FrameLayout>
+    <!-- Campos para Fornecedor Internacional -->
+
+
+    <!-- Botão para Salvar -->
+
+    <EditText
+        android:id="@+id/etCnpjForne"
+        android:layout_width="307dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="24dp"
+        android:autofillHints=""
+        android:hint="@string/cnpj"
+        android:importantForAutofill="no"
+        android:textColorHint="@color/black"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/btnSalvarForne"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etEstadoForne" />
+
+    <EditText
+        android:id="@+id/etEstadoForne"
+        android:layout_width="307dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="13dp"
+        android:hint="@string/estado"
+        android:importantForAutofill="no"
+        android:textColorHint="@color/black"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/etCnpjForne"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etPaisForne" />
+
+    <EditText
+        android:id="@+id/etPaisForne"
+        android:layout_width="307dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="17dp"
+        android:hint="@string/paisForne"
+        android:importantForAutofill="no"
+        android:textColorHint="@color/black"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/etEstadoForne"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etNumeroRegistroForne" />
+
+    <EditText
+        android:id="@+id/etNumeroRegistroForne"
+        android:layout_width="307dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="13dp"
+        android:hint="@string/n_registro"
+        android:importantForAutofill="no"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/etPaisForne"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerTipoFornecedor"
+        tools:textColorHint="@color/black" />
+
+    <Button
+        android:id="@+id/btnSalvarForne"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginBottom="84dp"
+        android:text="@string/BtnCadForne"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etCnpjForne" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

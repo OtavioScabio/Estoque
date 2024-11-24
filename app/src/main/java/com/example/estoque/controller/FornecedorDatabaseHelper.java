@@ -5,10 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
-import com.example.estoque.model.FornecedorInternacional;
-import com.example.estoque.model.FornecedorNacional;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,7 +55,7 @@ public class FornecedorDatabaseHelper extends SQLiteOpenHelper {
     }
 
     // Adicionar Fornecedor Nacional
-    public boolean addFornecedorNacional(String nome, String cnpj, String razaoSocial, String estado) {
+    public boolean addFornecedorNacional(String nome, String cnpj, String estado) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMN_NOME, nome);
@@ -85,44 +81,43 @@ public class FornecedorDatabaseHelper extends SQLiteOpenHelper {
     }
 
     // Listar todos os Fornecedores Nacionais
-    public List<FornecedorNacional> getAllFornecedoresNacionais() {
-        List<FornecedorNacional> fornecedores = new ArrayList<>();
+    public List<String> getAllFornecedoresNacionais() {
+        List<String> fornecedores = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NACIONAL, null);
 
         if (cursor.moveToFirst()) {
             do {
-                fornecedores.add(new FornecedorNacional(
-                        cursor.getInt(0),
-                        cursor.getString(1),
-                        cursor.getString(2),
-                        cursor.getString(3)
-                ));
+                String fornecedorNac = "ID: "+ cursor.getInt(0) +
+                        ", Nome: " + cursor.getString(1) +
+                        ", CNPJ: " + cursor.getString(2) +
+                        ", Estado: " + cursor.getString(3);
+
+                fornecedores.add(fornecedorNac);
             } while (cursor.moveToNext());
         }
         cursor.close();
-        db.close();
         return fornecedores;
     }
 
     // Listar todos os Fornecedores Internacionais
-    public List<FornecedorInternacional> getAllFornecedoresInternacionais() {
-        List<FornecedorInternacional> fornecedores = new ArrayList<>();
+    public List<String> getAllFornecedoresInternacionais() {
+        List<String> fornecedores = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_INTERNACIONAL, null);
 
         if (cursor.moveToFirst()) {
             do {
-                fornecedores.add(new FornecedorInternacional(
-                        cursor.getInt(0),
-                        cursor.getString(1),
-                        cursor.getString(2),
-                        cursor.getString(3)
-                ));
+                String fornecedorInter = "ID: "+ cursor.getInt(0) +
+                        ", Nome: " + cursor.getString(1) +
+                        ", País: " + cursor.getString(2) +
+                        ", Nmr. Registro: " + cursor.getString(3);
+
+                fornecedores.add(fornecedorInter);
+
             } while (cursor.moveToNext());
         }
         cursor.close();
-        db.close();
         return fornecedores;
     }
 
@@ -142,7 +137,7 @@ public class FornecedorDatabaseHelper extends SQLiteOpenHelper {
         return result > 0;
     }
     // Atualizar fornecedor nacional
-    public boolean updateFornecedorNacional(int id, String nome, String cnpj, String razaoSocial, String estado) {
+    public boolean updateFornecedorNacional(int id, String nome, String cnpj, String estado) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMN_NOME, nome);
